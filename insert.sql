@@ -1,9 +1,11 @@
+
+--1. hotel ( hotel_id,  hotel_address, hotel_desc, current_balance, annual_income, es_date)
 insert into
     hotel
 values
     (
         'H0001',
-        'Near By chokdi',
+        'Nearby chokdi',
         'Anand',
         1200000,
         540000,
@@ -48,7 +50,7 @@ values
 
 
 
-
+--2. employee( employee_id, hotel_id, first_name, last_name, gender, salary )
 insert into
     employee
 values
@@ -57,7 +59,7 @@ values
 insert into
     employee
 values
-    ('E02', 'H0002', 'Mohan', 'patel', 'M', 15000);
+    ('E02', 'H0002', 'Mohan', 'patel', 'M', 45000);
 
 insert into
     employee
@@ -71,7 +73,7 @@ values
 
 
 
-
+--3. role( role_id, role_name )
 insert into
     role
 values
@@ -82,9 +84,18 @@ insert into
 values
     ('E01', 'Servant');
 
+insert into
+    role
+values
+    ('E04', 'receptionist');
+
+insert into
+    role
+values
+    ('E05', 'Servant');
 
 
-
+--4. login( login_id,  login_role_id, username, password )
 insert into
     login
 values
@@ -100,32 +111,7 @@ insert into
 values
     ('L03', 'E05', 'Gopal_Jay', 'Gopal@DBMS');
 
-
-
-
-insert into
-    customer
-values
-    ('C01', 'Gopal', 'Shah', 'M');
-
-insert into
-    customer
-values
-    ('C02', 'Jayoti', 'Shah', 'F');
-
-insert into
-    customer
-values
-    ('C03', 'Jay', 'Modi', 'M');
-
-insert into
-    customer
-values
-    ('C04', 'Mohan', 'Joshi', 'M');
-
-
-
-
+--5. facility( hotel_id, garden, gym, gym_charge, swimming_pool, swimming_pool_charge, free_wi_fi )
 insert into
     facility
 values
@@ -147,55 +133,59 @@ values
     ('H0004', 'Y', 'Y', 500, 'N', 0, 'N');
 
 
-
-
+--6. room( room_no, room_type, room_price, status, capacity)
+insert into
+    room
+values
+    ('H0001R102', 'Delux', 500, 'E', 2);
 
 insert into
     room
 values
-    ('R102', 'H0001', 'Delux', 5000, 'E', 2, 3);
+    ('H0002R122', 'Super Delux', 800, 'E', 2);
 
 insert into
     room
 values
-    ('R122', 'H0002', 'Super Delux', 8000, 'E', 2, 4);
+    ('H0003R120', 'Regular', 400, 'O', 3);
 
 insert into
     room
 values
-    ('R120', 'H0003', 'Regular', 4000, 'O', 3, 5);
+    ('H0002R111', 'Super Delux', 800, 'E', 1);
 
 insert into
     room
 values
-    ('R111', 'H0002', 'Super Delux', 8000, 'E', 1, 2);
+    ('H0004R125', 'Super Delux', 600, 'E', 2);
+
+
+
+--7. customer( customer_id, oroom, first_name, last_name, gender, spe_customer, duration )
 
 insert into
-    room
+    customer
 values
-    ('R125', 'H0004', 'Super Delux', 8000, 'E', 2, 1);
-
-
-
+    ('C01', 'Gopal', 'Shah', 'M', 'H0004R125', 'N', 4);
 
 insert into
-    payment
+    customer
 values
-    (1223, 'UPI', '02-January-2020', 500, 400, 4500);
+    ('C02', 'Jayoti', 'Shah', 'F', 'H0003R120', 'Y', 3);
 
 insert into
-    payment
+    customer
 values
-    (1345, 'Cash', '22-June-2021', 300, 500, 5500);
+    ('C03', 'Jay', 'Modi', 'M', 'H0002R122', 'N',4);
 
 insert into
-    payment
+    customer
 values
-    (1500, 'Cheque', '2-June-2022', 350, 650, 6500);
+    ('C04', 'Mohan', 'Joshi', 'M', 'H0001R102', 'N',1);
 
 
 
-
+--8. customer_contact( contact_id, contact_number, fax_number, email )
 insert into
     customer_contact
 values
@@ -217,9 +207,7 @@ values
     ('C04', 1212000034, 72700, 'mohan@gmail.com');
 
 
-
-
-
+--9. customer_address( address_id, city, state, postal_code, address_desc ) 
 insert into
     customer_address
 values
@@ -265,8 +253,29 @@ values
     );
 
 
+--10. payment( payment_id, pay_method, pay_date, pay_disc, facility_charges, pay_amount)
 
+insert into
+    payment
+values
+    ('C01', 'UPI', '02-January-2020', 0, 500, 1700);
 
+insert into
+    payment
+values
+    ('C02', 'Cash', '22-June-2021', 300, 600, 1500);
+
+insert into
+    payment
+values
+    ('C03', 'Cheque', '2-June-2022', 0, 300, 3500);
+
+insert into
+    payment
+values
+    ('C04', 'Cheque', '10-June-2019', 0, 400, 900);
+
+--11. emp_contact( contact_id, contact_no, email )
 insert into
     emp_contact
 values
@@ -289,7 +298,7 @@ values
 
 
 
-
+--11. emp_address( address_id, city, state, postal_code, address_desc )
 insert into
     emp_address
 values
